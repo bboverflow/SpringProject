@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--通过构造器获得bean-->
     <bean id="duke"
           class="cn.trusteye.springidol.Juggler">
         <constructor-arg value="15"/>
@@ -12,15 +13,40 @@
           class="cn.trusteye.springidol.Sonnet29">
     </bean>
 
+    <!--构造器引用对象-->
     <bean id="poeticDuke"
           class="cn.trusteye.springidol.poeticJuggler">
         <constructor-arg value="15"/>
         <constructor-arg ref="sonnet29"/>
     </bean>
 
+    <!--通过工厂获得bean-->
     <bean id="theStage"
           class="cn.trusteye.springidol.Stage"
           factory-method="getInstance">
+    </bean>
+
+    <!--引用其它bean-->
+    <bean id="kenny"
+    class="cn.trusteye.springidol.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+        <property name="instrument" ref="piano"/>
+    </bean>
+
+    <!--内部bean-->
+    <bean id="jerry"
+          class="cn.trusteye.springidol.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+        <property name="instrument">
+            <bean class="cn.trusteye.springidol.Saxophone"/>
+        </property>
+    </bean>
+
+    <bean id="saxophone"
+          class="cn.trusteye.springidol.Saxophone">
+    </bean>
+    <bean id="piano"
+    class="cn.trusteye.springidol.Piano">
     </bean>
 
 </beans>

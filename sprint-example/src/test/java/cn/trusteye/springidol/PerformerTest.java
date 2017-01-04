@@ -39,4 +39,11 @@ public class PerformerTest {
         Assert.assertEquals("hello",stage.getContent());
     }
 
+    @Test
+    public void TestInstrumentalist() throws PerformanceExeption {
+        Instrumentalist instrumentalist = (Instrumentalist) ctx.getBean("kenny");
+        String ret = instrumentalist.perform();
+        Assert.assertEquals("Playing Jingle Bells : TOOT TOOT TOOT",ret);
+    }
+
 }
